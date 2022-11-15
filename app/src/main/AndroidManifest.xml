@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ishant.bikerush">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- For network provider location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- For GPS and network provider location -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- To access location when app is minimized -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:allowBackup="true"
+        android:name=".BikeRushApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BikeRush">
+        <activity android:name=".ui.TrackingActivity"></activity>
+        <activity
+            android:name=".ui.BikeRushActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".services.TrackingService"
+                 android:foregroundServiceType="location" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBpOSfLzhnc0Ed7ncPR67Tgm2RJqz1VqPY" />
+    </application>
+
+</manifest>
